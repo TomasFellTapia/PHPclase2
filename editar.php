@@ -2,6 +2,8 @@
 include("conexion.php");
 $consulta = "SELECT * from marcas";
 $resultado = mysqli_query($conexion, $consulta);
+$id_recibido = $_GET["id_enviado"];
+while(
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +42,7 @@ $resultado = mysqli_query($conexion, $consulta);
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="logo" placeholder="">
 
             </div>
-            <button type="submit" class="btn btn-success">Insertar</button>
+            <button type="submit" class="btn btn-success">Editar</button>
         </form>
 
 
@@ -49,41 +51,7 @@ $resultado = mysqli_query($conexion, $consulta);
     </div>
     </div>
 
-    <div class="col">
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Origen</th>
-                    <th scope="col">Logo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = mysqli_fetch_assoc($resultado)) {
-                    echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["nombre"] . "</td>";
-                    echo "<td>" . $row["origen"] . "</td>";
-                    echo "<td>" . $row["logo"] . "</td>";
-                    echo "<td>";
-                    echo "<a href='eliminar.php?id_enviado=" . $row["id"] . "'>";
-                    echo "<button class='btb btn-sm'>Eliminar</button>";
-                    echo "<a href='editar.php?id_enviado=" . $row["id"] . "'>";
-                    echo "<button class='btb btn-sm'>Editar</button>";
-                    echo "</a>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                ;
-                ?>
-            </tbody>
-        </table>
-    </div>
-    </div>
-    </div>
+   
 
 </body>
 
